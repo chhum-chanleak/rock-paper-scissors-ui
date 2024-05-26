@@ -18,7 +18,7 @@ const getComputerChoice = () => {
 // Ask user to input 'Rock', 'Paper', or 'Scissor' 
 const getHumanChoice = () => {
 
-  let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissor'. : ");
+  let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissors'. : ");
   
   return humanChoice ? humanChoice.toLocaleLowerCase() : "You did not pick one of the three choices.";
 };
