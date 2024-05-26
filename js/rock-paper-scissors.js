@@ -15,5 +15,11 @@ const getComputerChoice = () => {
   }
 };
 
+//
+const getHumanChoice = () => {
 
+  let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissor'. : ");
+  
+  return humanChoice ? humanChoice.toLocaleLowerCase() : "";
+};
 
