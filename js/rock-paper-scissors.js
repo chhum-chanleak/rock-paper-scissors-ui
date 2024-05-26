@@ -20,6 +20,7 @@ const getHumanChoice = () => {
 
   let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissor'. : ");
   
-  return humanChoice ? humanChoice.toLocaleLowerCase() : "";
+  return humanChoice ? humanChoice.toLocaleLowerCase() : "You did not pick one of the three choices.";
 };
+
 
