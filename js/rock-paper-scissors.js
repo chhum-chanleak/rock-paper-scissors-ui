@@ -119,14 +119,15 @@ const pickPaper = (human, computer) => {
 
       case 'scissors': 
         console.log("You lose. Scissors beat paper.");
-        break;
+        return 'computer';
 
       case 'rock':
         console.log("You win. Paper beats rock.");
-        break;
+        return 'human';
 
       default: 
         console.log("Draw!");
+        return "Draw";
     }
   }
 
