@@ -141,6 +141,18 @@ const pickScissors = (human, computer) => {
 
 };
 
+// This function verifies the winner
+const isWinner = (winner, humanScore, computerScore) => {
+
+  if (winner === 'human') { 
+    humanScore += 1;
+  } else if (winner === 'computer') {
+    computerScore += 1;
+  } else {
+    return 'It was a draw.'
+  }
+};
+
 // This function displays score.
 const displayScore = () => {
   // When the user picks 'rock'
