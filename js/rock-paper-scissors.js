@@ -57,7 +57,7 @@ const startGame = () => {
     pickRock(humanChoice, computerChoice, humanScore, computerScore);
     pickPaper(humanChoice, computerChoice);
     pickScissors(humanChoice, computerChoice);
-
+    
     test--;
   }
 
@@ -86,6 +86,13 @@ const pickRock = (human, computer, computerScore, humanScore) => {
 
     console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
 
+    if (computer === 'paper') {
+
+      return computerScore;
+    } else if (computer === 'scissors') {
+
+      return humanScore;
+    }
   }
 
 };
