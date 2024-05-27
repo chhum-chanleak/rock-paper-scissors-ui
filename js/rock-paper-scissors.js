@@ -173,11 +173,6 @@ const isWinner = (winner, humanScore, computerScore) => {
   }
 };
 
-// This function displays score.
-const displayScore = () => {
-  // When the user picks 'rock'
-  pickRock();
-}
 
 startGame();
 
