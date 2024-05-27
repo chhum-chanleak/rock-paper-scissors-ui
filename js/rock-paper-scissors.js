@@ -38,14 +38,16 @@ const startGame = () => {
 
 
   let gameStatus = true;
-  let test = 2;
+  let test = 10;
+  let humanScore = 0;
+  let computerScore = 0;
 
   while (test > 0) {
 
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
-    let humanScore = 0;
-    let computerScore = 0;
+ 
+    let winner;
 
     if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
       console.log(`Human: ${humanChoice}`);  
@@ -55,13 +57,21 @@ const startGame = () => {
       return;
     }
   
-    pickRock(humanChoice, computerChoice, humanScore, computerScore);
+    winner = pickRock(humanChoice, computerChoice);
+    
+    if (winner === 'human') {
+      humanScore += 1;
+    } else if (winner === 'computer') {
+      computerScore += 1;
+    }
+
     pickPaper(humanChoice, computerChoice);
     pickScissors(humanChoice, computerChoice);
+
+    console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
     
     test--;
   }
-
 };
 
 // Function for when user picks "rock".
