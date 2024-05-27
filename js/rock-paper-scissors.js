@@ -36,22 +36,31 @@ return "You neither picked 'rock', 'paper' or 'scissors'.";
 // generate random strings "rock", "paper", "scissors"
 const startGame = () => {
 
-  let humanChoice = getHumanChoice();
-  let computerChoice = getComputerChoice();
   let humanScore = 0;
   let computerScore = 0;
+  let gameStatus = true;
+  let test = 2;
 
-  if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
-    console.log(`Human: ${humanChoice}`);  
-    console.log(`Computer: ${computerChoice}`);
-  } else {
-    console.log(humanChoice);
-    return;
+  while (test > 0) {
+
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
+      console.log(`Human: ${humanChoice}`);  
+      console.log(`Computer: ${computerChoice}`);
+    } else {
+      console.log(humanChoice);
+      return;
+    }
+  
+    pickRock(humanChoice, computerChoice, humanScore, computerScore);
+    pickPaper(humanChoice, computerChoice);
+    pickScissors(humanChoice, computerChoice);
+
+    test--;
   }
 
-  pickRock(humanChoice, computerChoice, humanScore, computerScore);
-  pickPaper(humanChoice, computerChoice);
-  pickScissors(humanChoice, computerChoice);
 };
 
 // Function for when user picks "rock".
@@ -76,6 +85,7 @@ const pickRock = (human, computer, computerScore, humanScore) => {
     }
 
     console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
+
   }
 
 };
