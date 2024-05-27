@@ -20,8 +20,14 @@ const getHumanChoice = () => {
 
 let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissors'. : ");
 
-return humanChoice ? humanChoice.toLocaleLowerCase() : "You did not pick one of the three choices.";
+if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
+  return humanChoice;
 };
+
+return "You neither picked 'rock', 'paper' or 'scissors'.";
+}
+
+
 
 // This function prompt user to choose one of the three options and
 // generate random strings "rock", "paper", "scissors"
@@ -30,12 +36,14 @@ const startGame = () => {
   let humanChoice = getHumanChoice();
   let computerChoice = getComputerChoice();
 
-  console.log(`Human: ${humanChoice}`);
-  if (humanChoice !== 'rock' || humanChoice !== 'paper' || humanChoice !== 'scissors') {
-    return;
+  if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
+    console.log(`Human: ${humanChoice}`);  
+    console.log(`Computer: ${computerChoice}`);
+  } else {
+    console.log(humanChoice);
+    return
   }
-  
-  console.log(`Computer: ${computerChoice}`);
+
 
   pickRock(humanChoice, computerChoice);
   pickPaper(humanChoice, computerChoice);
@@ -86,6 +94,7 @@ const pickPaper = (human, computer) => {
 };
 
 startGame();
+
 
 // Play a single round
 // const playRound = () => {
