@@ -23,6 +23,39 @@ const getHumanChoice = () => {
   return humanChoice ? humanChoice.toLocaleLowerCase() : "You did not pick one of the three choices.";
 };
 
+let humanScore = 0;
+let computerScore = 0;
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice();
+
+// Play a single round
+const playRound = (human, computer) => {
+
+  console.log(human);
+  console.log(computer);
+
+  if (human === 'rock' && computer === 'paper') {
+    computerScore += 1;
+  } else if (human === 'rock' && computer === 'scissors') {
+    humanScore += 1;
+  } else if (human === 'paper' && computer === 'scissors') {
+    computerScore += 1;
+  } else if (human === 'paper' && computer === 'rock') {
+    humanScore += 1;
+  } else if (human === 'scissors' && computer === 'rock') {
+    computerScore += 1;
+  } else if (human === 'scissors' && computer === 'paper') {
+    humanScore += 1;
+  } else {
+    humanScore = humanScore;
+    computerScore = computerScore;
+  }
+
+  console.log(`Human: ${humanScore}          Computer: ${computerScore}`);
+
+};
+
+playRound(humanChoice, computerChoice);
 
 
 
