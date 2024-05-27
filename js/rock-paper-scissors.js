@@ -48,8 +48,6 @@ const startGame = () => {
   }
 
   pickRock(humanChoice, computerChoice, humanScore, computerScore);
-  console.log(humanScore);
-  console.log(computerScore);
   pickPaper(humanChoice, computerChoice);
   pickScissors(humanChoice, computerChoice);
 };
