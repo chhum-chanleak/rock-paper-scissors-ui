@@ -73,6 +73,8 @@ const pickRock = (human, computer, computerScore, humanScore) => {
 
       default: 
         console.log("Draw!");
+        console.log(humanScore);
+        console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
     }
   }
 
