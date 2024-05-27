@@ -38,7 +38,6 @@ const startGame = () => {
 
 
   let gameStatus = true;
-  let test = 10;
   let humanScore = 0;
   let computerScore = 0;
   
@@ -87,9 +86,10 @@ const startGame = () => {
     if (humanScore === 5 || computerScore === 5) {
       gameStatus = false;
     }
-
-
   }
+
+  (humanScore > computerScore) ? console.log(`The winner is Human: ${humanScore}`)
+  : console.log(`The winner is the Computer: ${computerScore}`);
 };
 
 // Function for when user picks "rock".
