@@ -41,12 +41,12 @@ const startGame = () => {
     console.log(`Computer: ${computerChoice}`);
   } else {
     console.log(humanChoice);
-    return
+    return;
   }
-
 
   pickRock(humanChoice, computerChoice);
   pickPaper(humanChoice, computerChoice);
+  pickScissors(humanChoice, computerChoice);
 };
 
 // Function for when user picks "rock".
@@ -84,6 +84,28 @@ const pickPaper = (human, computer) => {
 
       case 'rock':
         console.log("You win. Paper beats rock.");
+        break;
+
+      default: 
+        console.log("Draw!");
+    }
+  }
+
+};
+
+// Function for when user picks "scissors".
+const pickScissors = (human, computer) => {
+
+  if (human === 'scissors') {
+
+    switch (computer) {
+
+      case 'rock': 
+        console.log("You lose. Rock beats scissors.");
+        break;
+
+      case 'paper':
+        console.log("You win. Scissors beat paper.");
         break;
 
       default: 
