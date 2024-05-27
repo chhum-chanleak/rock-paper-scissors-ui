@@ -47,7 +47,9 @@ const startGame = () => {
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
  
-    let winner;
+    let winnerRock;
+    let winnerPaper;
+    let winnerScissors;
 
     if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
       console.log(`Human: ${humanChoice}`);  
@@ -57,16 +59,27 @@ const startGame = () => {
       return;
     }
   
-    winner = pickRock(humanChoice, computerChoice);
-    
+    winnerRock = pickRock(humanChoice, computerChoice);
+    // isWinner(winner, humanScore, computerScore);
     if (winner === 'human') {
       humanScore += 1;
     } else if (winner === 'computer') {
       computerScore += 1;
     }
 
-    pickPaper(humanChoice, computerChoice);
-    pickScissors(humanChoice, computerChoice);
+    winnerPaper = pickPaper(humanChoice, computerChoice);
+    if (winnerPaper === 'human') {
+      humanScore += 1;
+    } else if (winnerPaper === 'computer') {
+      computerScore += 1;
+    }
+
+    winnerScissors = pickScissors(humanChoice, computerChoice);
+    if (winnerScissors === 'human') {
+      humanScore += 1;
+    } else if (winnerScissors === 'computer') {
+      computerScore += 1;
+    }
 
     console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
     
