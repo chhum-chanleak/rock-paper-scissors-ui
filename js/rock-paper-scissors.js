@@ -36,8 +36,7 @@ return "You neither picked 'rock', 'paper' or 'scissors'.";
 // generate random strings "rock", "paper", "scissors"
 const startGame = () => {
 
-  let humanScore = 0;
-  let computerScore = 0;
+
   let gameStatus = true;
   let test = 2;
 
@@ -45,6 +44,8 @@ const startGame = () => {
 
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
+    let humanScore = 0;
+    let computerScore = 0;
 
     if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
       console.log(`Human: ${humanChoice}`);  
