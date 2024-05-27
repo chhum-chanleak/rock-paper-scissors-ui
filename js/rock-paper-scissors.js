@@ -70,7 +70,7 @@ const pickRock = (human, computer, computerScore, humanScore) => {
       case 'scissors':
         console.log("You win. Rock beats scissors.");
         humanScore += 1;
-        console.log(computerScore);
+        console.log(humanScore);
         break;
 
       default: 
