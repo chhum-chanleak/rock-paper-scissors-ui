@@ -42,7 +42,7 @@ const startGame = () => {
   let humanScore = 0;
   let computerScore = 0;
   
-  while (test > 0) {
+  while (gameStatus) {
 
     let humanChoice = getHumanChoice();
     let computerChoice = getComputerChoice();
@@ -60,7 +60,7 @@ const startGame = () => {
     }
   
     winnerRock = pickRock(humanChoice, computerChoice);
-    // isWinner(winner, humanScore, computerScore);
+
     if (winnerRock === 'human') {
       humanScore += 1;
     } else if (winnerRock === 'computer') {
@@ -83,7 +83,12 @@ const startGame = () => {
 
     console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
     
-    test--;
+    // If either humanScore or computerScore is 5, then stop the loop
+    if (humanScore === 5 || computerScore === 5) {
+      gameStatus = false;
+    }
+
+
   }
 };
 
