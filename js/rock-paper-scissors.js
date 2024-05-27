@@ -61,9 +61,9 @@ const startGame = () => {
   
     winnerRock = pickRock(humanChoice, computerChoice);
     // isWinner(winner, humanScore, computerScore);
-    if (winner === 'human') {
+    if (winnerRock === 'human') {
       humanScore += 1;
-    } else if (winner === 'computer') {
+    } else if (winnerRock === 'computer') {
       computerScore += 1;
     }
 
