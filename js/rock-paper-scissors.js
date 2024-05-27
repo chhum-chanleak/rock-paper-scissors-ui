@@ -31,6 +31,10 @@ const startGame = () => {
   let computerChoice = getComputerChoice();
 
   console.log(`Human: ${humanChoice}`);
+  if (humanChoice !== 'rock' || humanChoice !== 'paper' || humanChoice !== 'scissors') {
+    return;
+  }
+  
   console.log(`Computer: ${computerChoice}`);
 
   pickRock(humanChoice, computerChoice);
