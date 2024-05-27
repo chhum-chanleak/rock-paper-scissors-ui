@@ -19,11 +19,13 @@ const getComputerChoice = () => {
 // Ask user to input 'Rock', 'Paper', or 'Scissor' 
 const getHumanChoice = () => {
 
-let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissors'. : ").toLowerCase();
+let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissors'. : ");
 
-if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
-  return humanChoice;
-};
+if (humanChoice === null) {
+  return "You neither picked 'rock', 'paper' or 'scissors'.";
+} else if (humanChoice.toLowerCase() === 'rock' || humanChoice.toLowerCase() === 'paper' || humanChoice.toLowerCase() === 'scissors') {
+  return humanChoice.toLowerCase();
+}
 
 return "You neither picked 'rock', 'paper' or 'scissors'.";
 }
