@@ -41,7 +41,7 @@ const startGame = () => {
   let test = 10;
   let humanScore = 0;
   let computerScore = 0;
-
+  
   while (test > 0) {
 
     let humanChoice = getHumanChoice();
@@ -91,6 +91,7 @@ const pickRock = (human, computer) => {
 
       default: 
         console.log("Draw!");
+        return "Draw";
     }
   }
 
