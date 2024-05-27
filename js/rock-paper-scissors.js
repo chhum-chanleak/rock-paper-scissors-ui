@@ -1,3 +1,4 @@
+// This function generates either 'rock', 'paper', or 'scissors'.
 const getComputerChoice = () => {
 
   let randomNum = Math.floor(Math.random() * 3);
@@ -35,6 +36,8 @@ const startGame = () => {
 
   let humanChoice = getHumanChoice();
   let computerChoice = getComputerChoice();
+  let humanScore = 0;
+  let computerScore = 0;
 
   if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
     console.log(`Human: ${humanChoice}`);  
@@ -44,13 +47,15 @@ const startGame = () => {
     return;
   }
 
-  pickRock(humanChoice, computerChoice);
+  pickRock(humanChoice, computerChoice, humanScore, computerScore);
+  console.log(humanScore);
+  console.log(computerScore);
   pickPaper(humanChoice, computerChoice);
   pickScissors(humanChoice, computerChoice);
 };
 
 // Function for when user picks "rock".
-const pickRock = (human, computer) => {
+const pickRock = (human, computer, computerScore, humanScore) => {
 
   if (human === 'rock') {
 
@@ -58,10 +63,14 @@ const pickRock = (human, computer) => {
 
       case 'paper': 
         console.log("You lose. Paper beats rock.");
+        computerScore += 1;
+        console.log(computerScore);
         break;
 
       case 'scissors':
         console.log("You win. Rock beats scissors.");
+        humanScore += 1;
+        console.log(computerScore);
         break;
 
       default: 
@@ -115,40 +124,14 @@ const pickScissors = (human, computer) => {
 
 };
 
+// This function displays score.
+const displayScore = () => {
+  // When the user picks 'rock'
+  pickRock();
+}
+
 startGame();
 
-
-// Play a single round
-// const playRound = () => {
-
-// let humanScore = 0;
-// let computerScore = 0;
-// let humanChoice = getHumanChoice();
-// let computerChoice = getComputerChoice();
-
-// console.log(humanChoice);
-// console.log(computerChoice);
-
-// if (humanChoice === 'rock' && computerChoice === 'paper') {
-//   computerScore += 1;
-// } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-//   humanScore += 1;
-// } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-//   computerScore += 1;
-// } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-//   humanScore += 1;
-// } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
-//   computerScore += 1;
-// } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-//   humanScore += 1;
-// } else {
-//   humanScore = humanScore;
-//   computerScore = computerScore;
-// }
-
-// console.log(`Human: ${humanScore}          Computer: ${computerScore}`);
-
-// };
 
 
 
