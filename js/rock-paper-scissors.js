@@ -65,7 +65,7 @@ const startGame = () => {
 };
 
 // Function for when user picks "rock".
-const pickRock = (human, computer, computerScore, humanScore) => {
+const pickRock = (human, computer) => {
 
   if (human === 'rock') {
 
@@ -73,26 +73,14 @@ const pickRock = (human, computer, computerScore, humanScore) => {
 
       case 'paper': 
         console.log("You lose. Paper beats rock.");
-        computerScore += 1;
-        break;
+        return "computer";
 
       case 'scissors':
         console.log("You win. Rock beats scissors.");
-        humanScore += 1;
-        break;
+        return 'human';
 
       default: 
         console.log("Draw!");
-    }
-
-    console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
-
-    if (computer === 'paper') {
-
-      return computerScore;
-    } else if (computer === 'scissors') {
-
-      return humanScore;
     }
   }
 
