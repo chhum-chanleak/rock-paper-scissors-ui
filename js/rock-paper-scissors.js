@@ -5,13 +5,13 @@ const getComputerChoice = () => {
 
   if (randomNum === 1) {
     choice = "Rock";
-    return choice;
+    return choice.toLowerCase();
   } else if (randomNum === 2) {
     choice = "Paper";
-    return choice;
+    return choice.toLowerCase();
   } else {
     choice = "Scissors";
-    return choice;
+    return choice.toLowerCase();
   }
 };
 
@@ -22,5 +22,11 @@ const getHumanChoice = () => {
   
   return humanChoice ? humanChoice.toLocaleLowerCase() : "You did not pick one of the three choices.";
 };
+
+
+
+
+
+
 
 
