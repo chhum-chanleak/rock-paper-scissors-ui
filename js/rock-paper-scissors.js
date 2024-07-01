@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 // This function generates either 'rock', 'paper', or 'scissors'.
 const getComputerChoice = () => {
 
@@ -16,152 +19,144 @@ const getComputerChoice = () => {
   }
 };
 
-// Ask user to input 'Rock', 'Paper', or 'Scissor' 
-const getHumanChoice = () => {
+// Return 'rock' when Rock button is clicked
+const handleRockButton = () => {
+  const computerChoice = getComputerChoice();
+  const div = document.querySelector('.result');
 
-let humanChoice = prompt("Choose 'Rock', 'Paper', or 'Scissors'. : ");
-
-if (humanChoice === null) {
-  return "You neither picked 'rock', 'paper' or 'scissors'.";
-} else if (humanChoice.toLowerCase() === 'rock' || humanChoice.toLowerCase() === 'paper' || humanChoice.toLowerCase() === 'scissors') {
-  return humanChoice.toLowerCase();
-}
-
-return "You neither picked 'rock', 'paper' or 'scissors'.";
-}
-
-
-
-// This function prompt user to choose one of the three options and
-// generate random strings "rock", "paper", "scissors"
-const startGame = () => {
-
-
-  let gameStatus = true;
-  let humanScore = 0;
-  let computerScore = 0;
-  
-  while (gameStatus) {
-
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
- 
-    let winnerRock;
-    let winnerPaper;
-    let winnerScissors;
-
-    if (humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors') {
-      console.log(`Human: ${humanChoice}`);  
-      console.log(`Computer: ${computerChoice}`);
-    } else {
-      console.log(humanChoice);
-      return;
-    }
-  
-    winnerRock = pickRock(humanChoice, computerChoice);
-
-    if (winnerRock === 'human') {
-      humanScore += 1;
-    } else if (winnerRock === 'computer') {
+   switch (computerChoice) {
+    case 'rock': 
+      div.textContent = `Human: rock vs Computer: rock -> Draw`;
+      break;
+    case 'paper': 
+      div.textContent = `Human: rock vs Computer: paper -> Computer wins`;
       computerScore += 1;
-    }
-
-    winnerPaper = pickPaper(humanChoice, computerChoice);
-    if (winnerPaper === 'human') {
+      displayScore();
+      break;
+    case 'scissors': 
+      div.textContent = `Human: rock vs Computer: scissors -> Human wins`;
       humanScore += 1;
-    } else if (winnerPaper === 'computer') {
-      computerScore += 1;
+      displayScore();
+      break;
     }
-
-    winnerScissors = pickScissors(humanChoice, computerChoice);
-    if (winnerScissors === 'human') {
-      humanScore += 1;
-    } else if (winnerScissors === 'computer') {
-      computerScore += 1;
-    }
-
-    console.log(`Human: ${humanScore}         Computer: ${computerScore}`);
     
-    // If either humanScore or computerScore is 5, then stop the loop
-    if (humanScore === 5 || computerScore === 5) {
-      gameStatus = false;
-    }
-  }
-
-  (humanScore > computerScore) ? console.log(`The winner is Human: ${humanScore}`)
-  : console.log(`The winner is the Computer: ${computerScore}`);
 };
 
-// Function for when user picks "rock".
-const pickRock = (human, computer) => {
+// Return 'paper' when Paper button is clicked
+const handlePaperButton = () => {
+  const computerChoice = getComputerChoice();
+  const div = document.querySelector('.result');
 
-  if (human === 'rock') {
-
-    switch (computer) {
-
-      case 'paper': 
-        console.log("You lose. Paper beats rock.");
-        return "computer";
-
-      case 'scissors':
-        console.log("You win. Rock beats scissors.");
-        return 'human';
-
-      default: 
-        console.log("Draw!");
-        return "Draw";
+   switch (computerChoice) {
+    case 'rock': 
+      div.textContent = `Human: paper vs Computer: rock -> Human wins`;
+      humanScore += 1;
+      displayScore();
+      break;
+    case 'paper': 
+      div.textContent = `Human: paper vs Computer: paper -> Draw`;
+      break;
+    case 'scissors': 
+      div.textContent = `Human: paper vs Computer: scissors -> Computer wins`;
+      computerScore += 1;
+      displayScore();
+      break;
     }
-  }
-
 };
 
-// Function for when user picks "paper".
-const pickPaper = (human, computer) => {
+// Return 'scissors' when Scissors button is clicked
+const handleScissorsButton = () => {
+  const computerChoice = getComputerChoice();
+  const div = document.querySelector('.result');
 
-  if (human === 'paper') {
-
-    switch (computer) {
-
-      case 'scissors': 
-        console.log("You lose. Scissors beat paper.");
-        return 'computer';
-
-      case 'rock':
-        console.log("You win. Paper beats rock.");
-        return 'human';
-
-      default: 
-        console.log("Draw!");
-        return "Draw";
+   switch (computerChoice) {
+    case 'rock': 
+      div.textContent = `Human: scissors vs Computer: rock -> Computer wins`;
+      computerScore += 1;
+      displayScore();
+      break;
+    case 'paper': 
+      div.textContent = `Human: scissors vs Computer: paper -> Human wins`;
+      humanScore += 1;
+      displayScore();
+      break;
+    case 'scissors': 
+      div.textContent = `Human: scissors vs Computer: scissors -> Draw`;
+      break;
     }
-  }
-
 };
 
-// Function for when user picks "scissors".
-const pickScissors = (human, computer) => {
+// Apply event listeners to buttons
+const applyEvents = () => {
+  hideButton();
+  
+  const rockButton = document.querySelector('#rock');
+  const paperButton = document.querySelector('#paper');
+  const scissorsButton = document.querySelector('#scissors');
+  const start = document.querySelector('.start-game');
 
-  if (human === 'scissors') {
-
-    switch (computer) {
-
-      case 'rock': 
-        console.log("You lose. Rock beats scissors.");
-        return 'computer';
-
-      case 'paper':
-        console.log("You win. Scissors beat paper.");
-        return 'human';
-
-      default: 
-        console.log("Draw!");
-        return "Draw";
-    }
-  }
-
+  start.addEventListener('click', startGame);
+  rockButton.addEventListener('click', handleRockButton);
+  paperButton.addEventListener('click', handlePaperButton);
+  scissorsButton.addEventListener('click', handleScissorsButton);
 };
 
-startGame();
+// Hide Rock Paper Scissors buttons
+const hideButton = () => {
+  const inGameButtons = document.getElementsByClassName('in-game');
+
+  for (let i = 0; i < inGameButtons.length; i += 1) {
+    inGameButtons[i].style.display = 'none';
+  }
+};
+
+// start the game
+const startGame = () => {
+  const start = document.querySelector('.start-game');
+  const inGameButtons = document.getElementsByClassName('in-game');
+
+  start.style.display = 'none';
+
+  for (let i = 0; i < inGameButtons.length; i += 1) {
+    inGameButtons[i].style.display = 'block';
+  }
+};
+
+// Reload the page
+const reloadPage = () => {
+  window.location.reload();
+};
+
+// Show running and final scores
+const displayScore = () => {
+  const score = document.querySelector(`.score`);
+  const para = document.createElement('p');
+  const restart = document.createElement('button');
+
+  restart.textContent = 'Restart';
+  restart.addEventListener('click', reloadPage);
+
+  score.textContent = `
+  Human Score: ${humanScore}
+  Computer Score: ${computerScore}`;
+
+  if (humanScore === 3) {
+    para.textContent = 'The winner is Human.';
+    para.appendChild(restart);
+    document.body.appendChild(para);
+    hideButton();
+  } else if (computerScore === 3) {
+    para.textContent = 'The winner is Computer.';
+    para.appendChild(restart);
+    document.body.append(para);
+    hideButton();
+  } 
+};
+
+applyEvents();
+
+
+
 
 
 
